@@ -1,0 +1,104 @@
+@text-color: #333;
+
+.vacations {
+  padding: 40px;
+  table-layout: fixed;
+
+  &__title {
+    font-size: 40px;
+    line-height: 1.1em;
+    font-weight: bold;
+    color: @text-color;
+    margin-bottom: 1em;
+  }
+
+  &__table {
+    border-collapse: collapse;
+  }
+
+  td, th {
+    font-weight: normal;
+    vertical-align: top;
+    white-space: nowrap;
+    // outline: 1px solid #eee;
+
+    &:first-child {
+      padding-left: 0;
+    }
+
+    &:last-child {
+      padding-right: 0;
+    }
+  }
+
+  td {
+    padding: 0;
+    color: #555;
+    font-size: 10px;
+    font-family: sans-serif;
+    border-bottom: 1px solid #eee;
+
+    &:first-child {
+      padding: 3px 12px 3px 0;
+    }
+  }
+
+  th {
+    padding: 3px 0;
+    color: #888;
+    letter-spacing: 2px;
+  }
+
+  thead > tr:first-child > th {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  thead > tr:last-child {
+    border-bottom: 1px solid #aaa;
+
+    & > th:not(:first-child) {
+      border: 1px solid #ddd;
+      border-top-width: 0;
+      border-bottom-width: 0;
+    }
+  }
+
+  &__table-employee-days {
+    position: relative;
+    height: 12px;
+
+    &:after {
+      content: '';
+      display: table;
+      clear: both;
+    }
+  }
+
+  &__table-employee-day-range {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 10px;
+    line-height: 18px;
+    height: 18px;
+
+    // Temp:
+    background-color: lime;
+
+    &-dates {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translateX(-100%);
+      padding-right: 2px;
+      white-space: nowrap;
+    }
+  }
+
+  &__table-employee-day {
+    font-size: 0;
+    display: inline-block;
+    vertical-align: bottom;
+  }
+}
