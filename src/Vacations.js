@@ -63,6 +63,14 @@ class Vacations extends Component {
     const firstDateDay = firstDate.getDate();
     const lastDateDay = lastDate.getDate();
 
+
+    const {data} = this.props;
+    const numberOfEmployeesByDayNumber = this.getNumberOfEmployeesByDayNumber(data);
+    let daysInrange = [];
+    for (let i = firstDayNumber; i < lastDayNumber; i++) {
+      daysInrange.push(numberOfEmployeesByDayNumber[i]);
+    }
+
     return (
       <div
         className="vacations__table-employee-day-range"
@@ -72,6 +80,7 @@ class Vacations extends Component {
         <div className="vacations__table-employee-day-range-dates">
           {firstDateDay}–{lastDateDay}
         </div>
+        {daysInrange.map(this.renderDay)}
       </div>
     );
   }
@@ -127,9 +136,7 @@ class Vacations extends Component {
 
   render() {
     const {data} = this.props;
-
     const numberOfEmployeesByDayNumber = this.getNumberOfEmployeesByDayNumber(data);
-    console.log(numberOfEmployeesByDayNumber);
 
     return (
       <div className="vacations">
