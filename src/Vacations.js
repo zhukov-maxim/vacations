@@ -5,6 +5,19 @@ import './Vacations.less';
 const dayWidth = 4; // Ширина отметки одного дня в px.
 
 class Vacations extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isVerticalRulerVisible: true,
+      verticalRulerPosition: 0
+    };
+
+    this.handleMouseEnter = this.handleMouseEnter.bind(this);
+    this.handleMouseMove = this.handleMouseMove.bind(this);
+    this.handleMouseLeave = this.handleMouseLeave.bind(this);
+  }
+
   renderMonthHeader = (monthName, index) => {
     const style = {
       width: 30
@@ -134,6 +147,42 @@ class Vacations extends Component {
     );
   }
 
+  renderVerticalRuler() {
+    const verticalRulerStyle = {
+      visibility: this.state.isVerticalRulerVisible ? 'visible' : 'hidden',
+      left: this.state.verticalRulerPosition
+    };
+
+    return (
+      <div
+        className="vacations__table-vertical-ruler"
+        style={verticalRulerStyle}
+      />
+    );
+  }
+
+  handleMouseEnter(event) {
+    this.setState({
+      isVerticalRulerVisible: true
+    });
+  }
+
+  handleMouseLeave(event) {
+    this.setState({
+      isVerticalRulerVisible: false
+    });
+  }
+
+  handleMouseMove(event) {
+    const tableWrapperOffsetX = this.refs.tableWrapper.getBoundingClientRect().left;
+    const cursorPageOffsetX = event.clientX;
+    const cursorInsideWrapperOffsetX = cursorPageOffsetX - tableWrapperOffsetX;
+
+    this.setState({
+      verticalRulerPosition: cursorInsideWrapperOffsetX
+    });
+  }
+
   render() {
     const {data} = this.props;
     const numberOfEmployeesByDayNumber = this.getNumberOfEmployeesByDayNumber(data);
@@ -144,23 +193,32 @@ class Vacations extends Component {
           Отпускные дни сотрудников<br/>
           Сбертеха в 2016 году
         </div>
-        <table className="vacations__table">
-          <thead>
-            <tr className="vacations__table-header">
-              <th className="vacations__table-header-item_employee"></th>
-              <th colSpan="12">
-                {numberOfEmployeesByDayNumber.map(this.renderDay)}
-              </th>
-            </tr>
-            <tr className="vacations__table-header">
-              <th className="vacations__table-header-item_employee"></th>
-              {MONTHS.map(this.renderMonthHeader)}
-            </tr>
-          </thead>
-          <tbody>
-            {data.map(this.renderEmployee)}
-          </tbody>
-        </table>
+        <div
+          className="vacations__table-wrapper"
+          ref="tableWrapper"
+          onMouseEnter={this.handleMouseEnter}
+          onMouseMove={this.handleMouseMove}
+          onMouseLeave={this.handleMouseLeave}
+        >
+          {this.renderVerticalRuler()}
+          <table className="vacations__table">
+            <thead>
+              <tr className="vacations__table-header">
+                <th className="vacations__table-header-item_employee"></th>
+                <th colSpan="12">
+                  {numberOfEmployeesByDayNumber.map(this.renderDay)}
+                </th>
+              </tr>
+              <tr className="vacations__table-header">
+                <th className="vacations__table-header-item_employee"></th>
+                {MONTHS.map(this.renderMonthHeader)}
+              </tr>
+            </thead>
+            <tbody>
+              {data.map(this.renderEmployee)}
+            </tbody>
+          </table>
+        </div>
       </div>
     );
   }

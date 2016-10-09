@@ -13,7 +13,12 @@
   }
 
   &__table {
+    position: relative;
     border-collapse: collapse;
+
+    &-wrapper {
+      position: relative;
+    }
   }
 
   td, th {
@@ -105,5 +110,15 @@
 
   &__table-employee-day-range &__table-employee-day {
     height: 18px !important;
+  }
+
+  &__table-vertical-ruler {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    width: 1px;
+    bottom: 0;
+    z-index: 1;
+    background-color: rgba(0,0,0,0.1);
   }
 }
