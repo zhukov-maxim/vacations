@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import {dayOfYear, MONTHS, COLORS} from './utils';
+import {dayOfYear, MONTHS, COLORS} from '../utils';
 import './Vacations.less';
 
-const dayWidth = 4; // Ширина отметки одного дня в px.
+const dayWidth = 3; // Ширина отметки одного дня в px.
 
 class Vacations extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      isVerticalRulerVisible: true,
+      isVerticalRulerVisible: false,
       verticalRulerPosition: 0
     };
 
@@ -93,7 +93,6 @@ class Vacations extends Component {
         <div className="vacations__table-employee-day-range-dates">
           {firstDateDay}–{lastDateDay}
         </div>
-        {daysInrange.map(this.renderDay)}
       </div>
     );
   }
@@ -133,11 +132,9 @@ class Vacations extends Component {
 
   renderDay(value, index) {
     const horizontalScale = dayWidth;
-    const verticalScale = 9;
 
     const style = {
       width: horizontalScale,
-      height: value ? value * verticalScale : 1,
       backgroundColor: COLORS[value]
     };
 
@@ -189,10 +186,6 @@ class Vacations extends Component {
 
     return (
       <div className="vacations">
-        <div className="vacations__title">
-          Отпускные дни сотрудников<br/>
-          Сбертеха в 2016 году
-        </div>
         <div
           className="vacations__table-wrapper"
           ref="tableWrapper"

@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Vacations from './Vacations';
+import VacationsChart from './VacationsChart/VacationsChart';
 import {data} from './testData';
 import './index.less';
 
 ReactDOM.render(
-  <Vacations data={data}/>,
+  <VacationsChart data={data}/>,
   document.getElementById('root')
 );
