@@ -4,6 +4,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Vacations</title>
+    <script>
+      function initGoogleApi() {
+        if (window.initializeGoogleApi) {
+          window.initializeGoogleApi();
+        }
+      }
+    </script>
+    <script src='https://apis.google.com/js/client.js?onload=initGoogleApi'>
+    </script>
   </head>
   <body>
     <div id="root"></div>

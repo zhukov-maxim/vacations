@@ -2,3 +2,37 @@ body {
   margin: 0;
   padding: 0;
 }
+
+.loader-wrapper {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.loader {
+  margin: 60px auto;
+  font-size: 10px;
+  position: relative;
+  text-indent: -9999em;
+  border: 1.1em solid rgba(204,204,204, 0.2);
+  border-left: 1.1em solid #ccc;
+  transform: translateZ(0);
+  animation: loader 1.1s infinite linear;
+
+  &,
+  &:after {
+    border-radius: 50%;
+    width: 10em;
+    height: 10em;
+  }
+}
+
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  
+  100% {
+    transform: rotate(360deg);
+  }
+}
