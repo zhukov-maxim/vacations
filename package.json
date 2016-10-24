@@ -54,9 +54,10 @@
     "react-dom": "^15.3.2"
   },
   "scripts": {
-    "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "server": "node scripts/server.js"
+    "postinstall": "node scripts/build.js",
+    "server": "node scripts/server.js",
+    "start": "node scripts/start.js"
   },
   "babel": {
     "presets": [
