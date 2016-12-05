@@ -27,6 +27,7 @@
     "file-loader": "0.9.0",
     "filesize": "3.3.0",
     "find-cache-dir": "0.1.1",
+    "firebase": "^3.6.1",
     "fs-extra": "0.30.0",
     "gzip-size": "3.0.0",
     "html-webpack-plugin": "2.22.0",
@@ -38,6 +39,7 @@
     "path-exists": "2.1.0",
     "postcss-loader": "0.13.0",
     "promise": "7.1.1",
+    "react-dates": "4.1.0",
     "react-dev-utils": "^0.2.1",
     "recursive-readdir": "2.1.0",
     "rimraf": "2.5.4",
@@ -56,7 +58,8 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "server": "node scripts/server.js"
+    "server": "node scripts/server.js",
+    "deploy": "npm run build && firebase deploy"
   },
   "babel": {
     "presets": [
