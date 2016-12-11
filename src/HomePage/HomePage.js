@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Footer from '../Footer/Footer';
 import './HomePage.less';
 
 class HomePage extends Component {
@@ -45,12 +46,7 @@ class HomePage extends Component {
   renderFooter() {
     return (
       <div className="home-page__footer">
-        <div className="home-page__footer-logo">
-        </div>
-        <div className="home-page__footer-copyright">
-          Версия 0.1<br/>
-          © 2016
-        </div>
+        <Footer/>
       </div>
     );
   }
