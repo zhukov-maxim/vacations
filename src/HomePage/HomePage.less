@@ -1,0 +1,89 @@
+.home-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  &__jumbotron {
+    box-sizing: border-box;
+    background: #f5f1ee url("./HomePage__illustration.jpg") 0 0 no-repeat;
+    height: 354px;
+    padding-top: 82px;
+    text-align: center;
+  }
+
+  &__title {
+    font-size: 50px;
+    text-align: center;
+    margin-bottom: 23px
+  }
+
+  &__login-button {
+    box-sizing: border-box;
+    display: inline-block;
+    height: 50px;
+    padding: 0 40px 0 85px;
+    border: 2px solid #33aa22;
+    border-radius: 4px;
+    font-size: 16px;
+    line-height: 20px;
+    background: url("./HomePage__google-icon.png") 40px 50% no-repeat;
+    cursor: pointer;
+
+    &:hover {
+      background-color: fade(#33aa22, 6%);
+    }
+
+    &:active {
+      background-color: fade(#33aa22, 12%);
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__main {
+    flex: 1;
+    padding: 60px 40px;
+  }
+
+  &__navigation {
+    display: flex;
+
+    &-item {
+      color: #197e0b;
+      font-size: 16px;
+      text-decoration: none;
+
+      & + & {
+        margin-left: 65px;
+      }
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+      &:active {
+        color: darken(#197e0b, 8%);
+      }
+    }
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 34px 40px;
+
+    &-logo {
+      width: 97px;
+      height: 40px;
+      background: url("./HomePage__sbertech-intelligence-lab.png") 0 0 no-repeat;
+    }
+
+    &-copyright {
+      color: #9b9b9b;
+      font-size: 14px;
+    }
+  }
+}

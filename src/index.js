@@ -4,6 +4,7 @@ import * as firebase from "firebase";
 
 // import VacationForm from './VacationForm';
 import DateRangePickerWrapper from './DateRangePickerWrapper'
+import HomePage from './HomePage/HomePage'
 
 import VacationsChart from './VacationsChart/VacationsChart';
 // import {data} from './testData';
@@ -217,21 +218,21 @@ let theApp = {
     }
   },
 
-  render() {
+  renderHomePage() {
+    return (
+      <HomePage onClickLoginButton={theApp.signIn}/>
+    );
+  },
+
+  renderChartPage() {
     const data = this.userVacations;
 
-    ReactDOM.render(
+    return (
       <div>
         <div className="controls">
-          {
-            theApp.user.isLoggedIn ?
-              <button onClick={theApp.signOut}>
-                Выйти
-              </button> :
-              <button onClick={theApp.signIn}>
-                Войти
-              </button>
-          }
+          <button onClick={theApp.signOut}>
+            Выйти
+          </button>
         </div>
         <div className="half">
           {theApp.user.isLoggedIn ? this.renderUsers() : null}
@@ -244,6 +245,18 @@ let theApp = {
           theApp.user.isLoggedIn && data ?
           <VacationsChart data={data}/> :
           null
+        }
+      </div>
+    );
+  },
+
+  render() {
+    ReactDOM.render(
+      <div>
+        {
+          theApp.user.isLoggedIn ?
+            this.renderChartPage() :
+            this.renderHomePage()
         }
       </div>,
       document.getElementById('root')
