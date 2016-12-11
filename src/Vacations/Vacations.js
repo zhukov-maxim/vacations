@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {dayOfYear, MONTHS, COLORS} from '../utils';
 import './Vacations.less';
 
-const dayWidth = 3; // Ширина отметки одного дня в px.
+const dayWidth = 2; // Ширина отметки одного дня в px.
 
 class Vacations extends Component {
   constructor(props) {

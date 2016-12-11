@@ -40,9 +40,6 @@ class DateRangePickerWrapper extends Component {
 
     return (
       <div>
-        <h3>
-          Добавление отпуска
-        </h3>
         <DateRangePicker
           {...this.props}
           onDatesChange={this.onDatesChange}
@@ -52,13 +49,11 @@ class DateRangePickerWrapper extends Component {
           endDate={endDate}
           displayFormat='YYYY.MM.DD'
         />
-        <br/>
-        <br/>
         <button
           onClick={this.handleSubmit}
           disabled={submitDisabled}
         >
-          Добавить отпуск
+          Добавить
         </button>
       </div>
     );

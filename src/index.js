@@ -1,15 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import * as firebase from "firebase";
-
-// import VacationForm from './VacationForm';
-import DateRangePickerWrapper from './DateRangePickerWrapper'
 import HomePage from './HomePage/HomePage'
-
-import VacationsChart from './VacationsChart/VacationsChart';
-// import {data} from './testData';
+import ChartPage from './ChartPage/ChartPage'
 import './index.less';
-
 
 const firebaseConfig = {
   apiKey: "AIzaSyATgjF2vSNyKj8csUOOpS2B0fn5_COvE-g",
@@ -174,50 +168,6 @@ let theApp = {
     return firebase.database().ref().update(updates);
   },
 
-  renderUsers() {
-    if (this.users) {
-      return (
-        <div className='users'>
-          <h3>
-            Пользователи
-          </h3>
-          <div>
-            {this.users.map(item =>
-              <div key={item}>
-                {item}
-              </div>
-            )}
-          </div>
-        </div>
-      );
-    }
-  },
-
-  renderVacations() {
-    if (this.vacations) {
-      return (
-        <div className='vacations'>
-          <h3>
-            Отпуска
-          </h3>
-          <div>
-            {this.vacations.map(item =>
-              <div key={item.uid} className="vacation">
-                {item.info}
-                <span
-                  className="vacation__delete"
-                  onClick={() => this.removeVacation(item.uid)}
-                >
-                  ×
-                </span>
-              </div>
-            )}
-          </div>
-        </div>
-      );
-    }
-  },
-
   renderHomePage() {
     return (
       <HomePage onClickLoginButton={theApp.signIn}/>
@@ -225,28 +175,13 @@ let theApp = {
   },
 
   renderChartPage() {
-    const data = this.userVacations;
-
     return (
-      <div>
-        <div className="controls">
-          <button onClick={theApp.signOut}>
-            Выйти
-          </button>
-        </div>
-        <div className="half">
-          {theApp.user.isLoggedIn ? this.renderUsers() : null}
-          {theApp.user.isLoggedIn ? this.renderVacations() : null}
-        </div>
-        <div className="half">
-          {theApp.user.isLoggedIn ? <DateRangePickerWrapper onSubmit={(a, b) => this.addVacation(a, b)}/> : null}
-        </div>
-        {
-          theApp.user.isLoggedIn && data ?
-          <VacationsChart data={data}/> :
-          null
-        }
-      </div>
+      <ChartPage
+        onClickLogoutButton={theApp.signOut}
+        onAddVacation={(start, end) => this.addVacation(start, end)}
+        userFullName={theApp.user.fullName}
+        data={this.userVacations}
+      />
     );
   },
 
