@@ -1,4 +1,52 @@
 body {
-  margin: 0;
+  margin: 40px;
   padding: 0;
+}
+
+h3 {
+  margin: 2em 0 0.3em;
+}
+
+p {
+  margin-top: 0;
+}
+
+.controls {
+  margin-top: 50px;
+}
+
+.users,
+.vacations,
+.vacations-form {
+}
+
+.half {
+  display: inline-block;
+  vertical-align: top;
+  min-height: 1px;
+
+  & + & {
+    margin-left: 100px;
+  }
+}
+
+.vacation {
+  cursor: default;
+  
+  &__delete {
+    display: inline-block;
+    margin-left: 6px;
+    opacity: 0.4;
+    vertical-align: baseline;
+
+    &:hover {
+      opacity: 0.7;
+      color: #f00;
+      cursor: pointer;
+    }
+
+    &:active {
+      color: #c00;
+    }
+  }
 }
