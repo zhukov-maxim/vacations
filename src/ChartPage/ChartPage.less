@@ -46,6 +46,37 @@
     &-content {
       padding: 20px;
     }
+
+  }
+
+  &__stats {
+    margin-top: 40px;
+
+    &-table {
+      width: 100%;
+      border-collapse: collapse;
+
+      th,
+      td {
+        padding: 6px 20px;
+        text-align: left;
+
+        &:first-child {
+          padding-left: 0;
+        }
+
+        &:last-child {
+          padding-right: 0;
+        }
+      }
+
+      th {
+        color: #4a4a4a;
+        font-size: 12px;
+        font-weight: normal;
+        border-bottom: 1px solid #bdbdbd;
+      }
+    }
   }
 
   &__chart {

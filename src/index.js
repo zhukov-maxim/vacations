@@ -17,7 +17,8 @@ let theApp = {
   user: {
     isLoggedIn: false,
     fullName: '',
-    email: ''
+    email: '',
+    uid: ''
   },
 
   usersRef: firebase.database().ref('users'),
@@ -118,6 +119,7 @@ let theApp = {
       for (let key in rawList) {
         if (rawList.hasOwnProperty(key)) {
           let name = null;
+          let userUid = null;
           let dayRanges = [];
           const vacationsOfUser = rawList[key];
 
@@ -126,13 +128,17 @@ let theApp = {
               if (!name) {
                 name = vacationsOfUser[keyInner].employee;
               }
+              if (!userUid) {
+                userUid = vacationsOfUser[keyInner].userUid;
+              }
               dayRanges.push(vacationsOfUser[keyInner].daysRange);
             }
           }
 
           result.push({
             name: name,
-            dayRanges: dayRanges
+            dayRanges: dayRanges,
+            userUid: userUid
           });
         }
       }
@@ -179,8 +185,9 @@ let theApp = {
       <ChartPage
         onClickLogoutButton={theApp.signOut}
         onAddVacation={(start, end) => this.addVacation(start, end)}
+        userUid={theApp.user.uid}
         userFullName={theApp.user.fullName}
-        data={this.userVacations}
+        allVacations={this.userVacations}
       />
     );
   },
