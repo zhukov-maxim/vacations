@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import { DateRangePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
+import './DateRangePickerWrapper.less';
 
 class DateRangePickerWrapper extends Component {
   constructor(props) {
@@ -36,10 +37,10 @@ class DateRangePickerWrapper extends Component {
   render() {
     const { focusedInput, startDate, endDate } = this.state;
 
-    const submitDisabled = !startDate || !endDate;
+    const isSubmitEnabled = startDate && endDate;
 
     return (
-      <div>
+      <div className="date-range-picker-wrapper">
         <DateRangePicker
           {...this.props}
           onDatesChange={this.onDatesChange}
@@ -49,12 +50,16 @@ class DateRangePickerWrapper extends Component {
           endDate={endDate}
           displayFormat='YYYY.MM.DD'
         />
-        <button
-          onClick={this.handleSubmit}
-          disabled={submitDisabled}
-        >
-          Добавить
-        </button>
+        {
+          isSubmitEnabled ?
+            <button
+              className="date-range-picker-wrapper__submit"
+              onClick={this.handleSubmit}
+            >
+              Добавить
+            </button> :
+            null
+        }
       </div>
     );
   }
