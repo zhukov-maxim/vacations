@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Vacations from '../Vacations/Vacations';
 import DateRangePickerWrapper from '../DateRangePickerWrapper/DateRangePickerWrapper';
-import Footer from '../Footer/Footer';
 import './ChartPage.less';
 
 const VACATION_DAYS_IN_YEAR = 28;
@@ -132,20 +131,11 @@ class ChartPage extends Component {
     );
   }
 
-  renderFooter() {
-    return (
-      <div className="chart-page__footer">
-        <Footer/>
-      </div>
-    );
-  }
-
   render() {
     return (
       <div className="chart-page">
         {this.renderHeader()}
         {this.renderMain()}
-        {this.renderFooter()}
       </div>
     );
   }

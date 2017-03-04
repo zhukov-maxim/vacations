@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Footer from '../Footer/Footer';
 import './HomePage.less';
 
 class HomePage extends Component {
@@ -43,20 +42,11 @@ class HomePage extends Component {
     );
   }
 
-  renderFooter() {
-    return (
-      <div className="home-page__footer">
-        <Footer/>
-      </div>
-    );
-  }
-
   render() {
     return (
       <div className="home-page">
         {this.renderJumbotron()}
         {this.renderMain()}
-        {this.renderFooter()}
       </div>
     );
   }
