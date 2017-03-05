@@ -1,0 +1,40 @@
+.user-info {
+  padding: 25px;
+  margin-bottom: 30px;
+  background-color: rgba(245, 241, 238, 0.6);
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(139, 87, 42, 0.25);
+
+  &__login-message {
+    font-size: 16px;
+  }
+
+  &__link {
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &_login {
+      color: #4990e2;
+    }
+
+    &_logout {
+      color: #d0011b;
+      font-size: 12px;
+      margin-top: 1em;
+    }
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  &__name {
+    font-weight: bold;
+    font-size: 45px;
+  }
+}

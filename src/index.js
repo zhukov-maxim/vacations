@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import * as firebase from "firebase";
-import HomePage from './HomePage/HomePage'
-import ChartPage from './ChartPage/ChartPage'
+import App from './App/App'
 import './index.less';
 
 const firebaseConfig = {
@@ -174,33 +173,17 @@ let theApp = {
     return firebase.database().ref().update(updates);
   },
 
-  renderHomePage() {
-    return (
-      <HomePage onClickLoginButton={theApp.signIn}/>
-    );
-  },
-
-  renderChartPage() {
-    return (
-      <ChartPage
-        onClickLogoutButton={theApp.signOut}
-        onAddVacation={(start, end) => this.addVacation(start, end)}
+  render() {
+    ReactDOM.render(
+      <App
+        isUserLoggedIn={theApp.user.isLoggedIn}
         userUid={theApp.user.uid}
         userFullName={theApp.user.fullName}
         allVacations={this.userVacations}
-      />
-    );
-  },
-
-  render() {
-    ReactDOM.render(
-      <div>
-        {
-          theApp.user.isLoggedIn ?
-            this.renderChartPage() :
-            this.renderHomePage()
-        }
-      </div>,
+        onClickLoginButton={theApp.signIn}
+        onClickLogoutButton={theApp.signOut}
+        onAddVacation={(start, end) => this.addVacation(start, end)}
+      />,
       document.getElementById('root')
     );
   }

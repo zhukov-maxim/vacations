@@ -1,0 +1,50 @@
+.user-vacations {
+  flex-basis: 100%;
+
+  &__controls {
+    min-width: 400px;
+
+    &-header {
+      box-sizing: border-box;
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+
+    &-content {
+    }
+  }
+
+  &__stats {
+    margin-top: 20px;
+
+    &-table {
+      width: 100%;
+      border-collapse: collapse;
+
+      th,
+      td {
+        padding: 6px 20px;
+        text-align: left;
+
+        &:first-child {
+          padding-left: 0;
+        }
+
+        &:last-child {
+          padding-right: 0;
+        }
+      }
+
+      th {
+        color: #4a4a4a;
+        font-size: 12px;
+        font-weight: normal;
+        border-bottom: 1px solid #bdbdbd;
+      }
+    }
+  }
+
+  &__chart {
+    margin-left: 60px;
+  }
+}
