@@ -42,7 +42,6 @@ class DateRangePickerWrapper extends Component {
     return (
       <div className="date-range-picker-wrapper">
         <DateRangePicker
-          {...this.props}
           onDatesChange={this.onDatesChange}
           onFocusChange={this.onFocusChange}
           focusedInput={focusedInput}
