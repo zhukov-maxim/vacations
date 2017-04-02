@@ -48,6 +48,7 @@ class DateRangePickerWrapper extends Component {
           startDate={startDate}
           endDate={endDate}
           displayFormat='YYYY.MM.DD'
+          minimumNights={0}
         />
         {
           isSubmitEnabled ?
