@@ -130,7 +130,13 @@ let theApp = {
               if (!userUid) {
                 userUid = vacationsOfUser[keyInner].userUid;
               }
-              dayRanges.push(vacationsOfUser[keyInner].daysRange);
+
+              const vacation = {
+                key: keyInner,
+                daysRange: vacationsOfUser[keyInner].daysRange
+              }
+
+              dayRanges.push(vacation);
             }
           }
 
@@ -183,6 +189,7 @@ let theApp = {
         onClickLoginButton={theApp.signIn}
         onClickLogoutButton={theApp.signOut}
         onAddVacation={(start, end) => this.addVacation(start, end)}
+        onRemoveVacation={(uid) => this.removeVacation(uid)}
       />,
       document.getElementById('root')
     );

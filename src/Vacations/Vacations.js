@@ -60,7 +60,7 @@ class Vacations extends Component {
   }
 
   renderEmployeeDayRange = (dayRange, index) => {
-    const dayRangeArray = dayRange.split('-');
+    const dayRangeArray = dayRange.daysRange.split('-');
 
     const firstDate = new Date(dayRangeArray[0]);
     const lastDate = new Date(dayRangeArray[1]);
@@ -98,9 +98,13 @@ class Vacations extends Component {
   }
 
   getNumberOfEmployeesByDayNumber(data) {
-    const allDayRanges = data.reduce((previousValue, currentValue) => {
+    const allVacations = data.reduce((previousValue, currentValue) => {
       return previousValue.concat(currentValue.dayRanges);
     }, []);
+
+    const allDayRanges = allVacations.map(currentValue => {
+      return currentValue.daysRange;
+    });
 
     const allDayRangesByDayNumber = allDayRanges.map(currentValue => {
       const dayRangeArray = currentValue.split('-');

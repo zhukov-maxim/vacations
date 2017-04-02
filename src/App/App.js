@@ -16,7 +16,8 @@ class App extends Component {
 
   render() {
     const { allVacations, isUserLoggedIn, userFullName, userUid,
-            onClickLoginButton, onClickLogoutButton, onAddVacation } = this.props;
+            onClickLoginButton, onClickLogoutButton,
+            onAddVacation, onRemoveVacation } = this.props;
 
     const isFetchingVacations = isUserLoggedIn && !allVacations;
     const isVacationsFetched = isUserLoggedIn && allVacations;
@@ -31,6 +32,7 @@ class App extends Component {
           onClickLoginButton={onClickLoginButton}
           onClickLogoutButton={onClickLogoutButton}
           onAddVacation={onAddVacation}
+          onRemoveVacation={onRemoveVacation}
         />
         { isFetchingVacations && <Loader/> }
         { isVacationsFetched && this.renderVacations() }
@@ -48,5 +50,6 @@ App.propTypes = {
   allVacations: React.PropTypes.array,
   onClickLoginButton: React.PropTypes.func.isRequired,
   onClickLogoutButton: React.PropTypes.func.isRequired,
-  onAddVacation: React.PropTypes.func.isRequired
+  onAddVacation: React.PropTypes.func.isRequired,
+  onRemoveVacation: React.PropTypes.func.isRequired
 }

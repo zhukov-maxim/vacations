@@ -57,13 +57,23 @@ class UserVacations extends Component {
     }
 
     return (
-      currentUserDayRanges.map((item, index) => (
-        <tr key={index}>
+      currentUserDayRanges.map(item => (
+        <tr key={item.key}>
           <td>
-            {this.getFormattedDayRange(item)}
+            {this.getFormattedDayRange(item.daysRange)}
           </td>
           <td>
-            {this.getNumberOfDaysInDayRange(item)}
+            {this.getNumberOfDaysInDayRange(item.daysRange)}
+          </td>
+          <td>
+            <span
+              className="user-vacations__delete-vacation"
+              onClick={() => {
+                this.props.onRemoveVacation(item.key);
+              }}
+            >
+              ×
+            </span>
           </td>
         </tr>
       ))
@@ -81,6 +91,9 @@ class UserVacations extends Component {
               </th>
               <th>
                 Дни
+              </th>
+              <th>
+                {/* Controls */}
               </th>
             </tr>
           </thead>
@@ -119,6 +132,7 @@ export default UserVacations;
 
 UserVacations.propTypes = {
   onAddVacation: React.PropTypes.func.isRequired,
+  onRemoveVacation: React.PropTypes.func.isRequired,
   userUid: React.PropTypes.string.isRequired,
   allVacations: React.PropTypes.array
 }

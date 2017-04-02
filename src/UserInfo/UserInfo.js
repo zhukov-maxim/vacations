@@ -21,7 +21,8 @@ class UserInfo extends Component {
 
   renderUserDetails() {
     const { allVacations, userUid,
-            onClickLogoutButton, onAddVacation } = this.props;
+            onClickLogoutButton,
+            onAddVacation, onRemoveVacation } = this.props;
 
     return (
       <div className="user-info__details">
@@ -40,6 +41,7 @@ class UserInfo extends Component {
           userUid={userUid}
           allVacations={allVacations}
           onAddVacation={onAddVacation}
+          onRemoveVacation={onRemoveVacation}
         />
     </div>
     );
@@ -69,5 +71,6 @@ UserInfo.propTypes = {
   allVacations: React.PropTypes.array,
   onClickLoginButton: React.PropTypes.func.isRequired,
   onClickLogoutButton: React.PropTypes.func.isRequired,
-  onAddVacation: React.PropTypes.func.isRequired
+  onAddVacation: React.PropTypes.func.isRequired,
+  onRemoveVacation: React.PropTypes.func.isRequired
 }
