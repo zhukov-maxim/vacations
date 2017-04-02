@@ -38,14 +38,39 @@ class UserVacations extends Component {
   }
 
   getCurrentUserDayRanges() {
-    return this.props.allVacations.filter(
+    const currentUserVacations = this.props.allVacations.filter(
       item => item.userUid === this.props.userUid
-    )[0].dayRanges.sort();
+    );
+
+    if (!currentUserVacations.length) {
+      return null;
+    }
+
+    return currentUserVacations[0].dayRanges.sort();
+  }
+
+  renderCurrentUserDayRanges() {
+    const currentUserDayRanges = this.getCurrentUserDayRanges();
+
+    if (!currentUserDayRanges) {
+      return null;
+    }
+
+    return (
+      currentUserDayRanges.map((item, index) => (
+        <tr key={index}>
+          <td>
+            {this.getFormattedDayRange(item)}
+          </td>
+          <td>
+            {this.getNumberOfDaysInDayRange(item)}
+          </td>
+        </tr>
+      ))
+    );
   }
 
   renderStats() {
-    const currentUserDayRanges = this.getCurrentUserDayRanges();
-
     return (
       <div className="user-vacations__stats">
         <table className="user-vacations__stats-table">
@@ -60,18 +85,7 @@ class UserVacations extends Component {
             </tr>
           </thead>
           <tbody>
-            {
-              currentUserDayRanges.map((item, index) => (
-                <tr key={index}>
-                  <td>
-                    {this.getFormattedDayRange(item)}
-                  </td>
-                  <td>
-                    {this.getNumberOfDaysInDayRange(item)}
-                  </td>
-                </tr>
-              ))
-            }
+            {this.renderCurrentUserDayRanges()}
           </tbody>
         </table>
       </div>
