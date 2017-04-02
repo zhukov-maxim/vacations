@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import DateRangePickerWrapper from '../DateRangePickerWrapper/DateRangePickerWrapper';
+import DayPickerRangeControllerWrapper from '../Stateful/DayPickerRangeControllerWrapper/DayPickerRangeControllerWrapper';
+import moment from 'moment';
 import './UserVacations.less';
 
 class UserVacations extends Component {
@@ -108,6 +110,14 @@ class UserVacations extends Component {
               onSubmit={this.props.onAddVacation}
             />
             {this.renderStats()}
+            <DayPickerRangeControllerWrapper
+              minimumNights={0}
+              onOutsideClick={() => console.log('DayPickerRangeController::onOutsideClick')}
+              onPrevMonthClick={() => console.log('DayPickerRangeController::onPrevMonthClick')}
+              onNextMonthClick={() => console.log('DayPickerRangeController::onNextMonthClick')}
+              initialStartDate={moment().add(3, 'days')}
+              initialEndDate={moment().add(13, 'days')}
+            />
           </div>
         </div>
       </div>
