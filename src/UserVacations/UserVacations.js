@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import DateRangePickerWrapper from '../DateRangePickerWrapper/DateRangePickerWrapper';
+import { newDate } from '../utils';
 import './UserVacations.less';
 
 class UserVacations extends Component {
   // Expected format: "2017.01.09-2017.01.12":
   getFormattedDayRange(value) {
     const dates = value.split('-');
-    const firstDate = new Date(dates[0]);
-    const lastDate = new Date(dates[1]);
+    const firstDate = newDate(dates[0]);
+    const lastDate = newDate(dates[1]);
 
     const dateFormatFull = {
       month: 'long',
@@ -30,8 +31,8 @@ class UserVacations extends Component {
   // Expected format: "2017.01.09-2017.01.12":
   getNumberOfDaysInDayRange(value) {
     const dates = value.split('-');
-    const firstDate = new Date(dates[0]);
-    const lastDate = new Date(dates[1]);
+    const firstDate = newDate(dates[0]);
+    const lastDate = newDate(dates[1]);
     const numberOfDaysInDayRange = (lastDate - firstDate) / 1000 / 60 / 60 / 24 + 1;
 
     return numberOfDaysInDayRange;

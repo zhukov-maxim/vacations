@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {dayOfYear, MONTHS, COLORS} from '../utils';
+import { dayOfYear, MONTHS, COLORS } from '../utils';
+import { newDate } from '../utils';
 import './Vacations.less';
 
 const dayWidth = 2; // Ширина отметки одного дня в px.
@@ -62,8 +63,8 @@ class Vacations extends Component {
   renderEmployeeDayRange = (dayRange, index) => {
     const dayRangeArray = dayRange.daysRange.split('-');
 
-    const firstDate = new Date(dayRangeArray[0]);
-    const lastDate = new Date(dayRangeArray[1]);
+    const firstDate = newDate(dayRangeArray[0]);
+    const lastDate = newDate(dayRangeArray[1]);
 
     const firstDayNumber = dayOfYear(firstDate);
     const lastDayNumber = dayOfYear(lastDate);
@@ -108,8 +109,8 @@ class Vacations extends Component {
 
     const allDayRangesByDayNumber = allDayRanges.map(currentValue => {
       const dayRangeArray = currentValue.split('-');
-      const firstDate = new Date(dayRangeArray[0]);
-      const lastDate = new Date(dayRangeArray[1]);
+      const firstDate = new Date(dayRangeArray[0] + ' 12:00:00');
+      const lastDate = new Date(dayRangeArray[1] + ' 12:00:00');
       const firstDayNumber = dayOfYear(firstDate);
       const lastDayNumber = dayOfYear(lastDate);
 

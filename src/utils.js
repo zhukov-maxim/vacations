@@ -26,6 +26,15 @@ export const COLORS = [
   '#aa0000'
 ];
 
+// Получает дату в формате YYYY.MM.DD, возвращает объект типа Date.
+// Необходимо для устранения различий парсинга в Chrome и Safari/Firefox.
+export const newDate = data => {
+  const parts = data.split('.');
+  const date = new Date(parts[0], parts[1], parts[2]);
+
+  return date;
+}
+
 // Возвращает порядковый номер дня в году:
 // Не учитывает летнее время в некоторых странах.
 // http://stackoverflow.com/questions/8619879/javascript-calculate-the-day-of-the-year-1-366
