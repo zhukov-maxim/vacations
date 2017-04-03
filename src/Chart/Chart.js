@@ -19,9 +19,9 @@ class Chart extends Component {
     this.handleMouseLeave = this.handleMouseLeave.bind(this);
   }
 
-  renderMonthHeader = (monthName, index) => {
+  renderMonthHeader = (month, index) => {
     const style = {
-      width: 30
+      width: month.days * dayWidth
     };
 
     return (
@@ -30,7 +30,7 @@ class Chart extends Component {
         style={style} // TODO: Handle actual number of days.
         key={index}
       >
-        {monthName}
+        {month.name}
       </th>
     );
   }
@@ -71,7 +71,7 @@ class Chart extends Component {
 
     const style = {
       left: dayOfYear(firstDate) * dayWidth,
-      width: (lastDayNumber - firstDayNumber) * dayWidth
+      width: (lastDayNumber - firstDayNumber + 1) * dayWidth
     }
 
     const firstDateDay = firstDate.getDate();
@@ -109,8 +109,8 @@ class Chart extends Component {
 
     const allDayRangesByDayNumber = allDayRanges.map(currentValue => {
       const dayRangeArray = currentValue.split('-');
-      const firstDate = new Date(dayRangeArray[0] + ' 12:00:00');
-      const lastDate = new Date(dayRangeArray[1] + ' 12:00:00');
+      const firstDate = newDate(dayRangeArray[0]);
+      const lastDate = newDate(dayRangeArray[1]);
       const firstDayNumber = dayOfYear(firstDate);
       const lastDayNumber = dayOfYear(lastDate);
 
