@@ -30,7 +30,7 @@ export const COLORS = [
 // Необходимо для устранения различий парсинга в Chrome и Safari/Firefox.
 export const newDate = data => {
   const parts = data.split('.');
-  const date = new Date(parts[0], parts[1], parts[2]);
+  const date = new Date(parts[0], parts[1] - 1, parts[2]);
 
   return date;
 }
