@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.less';
 import UserInfo from '../UserInfo/UserInfo';
-import Vacations from '../Vacations/Vacations';
+import Chart from '../Chart/Chart';
 import Loader from '../Loader/Loader';
 
 class App extends Component {
@@ -9,7 +9,7 @@ class App extends Component {
     return (
       <div className="app__vacations">
         <h2>График отпусков отдела</h2>
-        <Vacations data={this.props.allVacations}/>
+        <Chart data={this.props.allVacations}/>
       </div>
     );
   }
