@@ -3,7 +3,7 @@ import { dayOfYear, MONTHS, COLORS } from '../utils';
 import { newDate } from '../utils';
 import './Chart.less';
 
-const dayWidth = 2; // Ширина отметки одного дня в px.
+const dayWidth = 4; // Ширина отметки одного дня в px.
 
 class Chart extends Component {
   constructor(props) {
@@ -70,7 +70,7 @@ class Chart extends Component {
     const lastDayNumber = dayOfYear(lastDate);
 
     const style = {
-      left: dayOfYear(firstDate) * dayWidth,
+      left: dayOfYear(firstDate) * dayWidth - 1, // -1 compensates table cell border.
       width: (lastDayNumber - firstDayNumber + 1) * dayWidth
     }
 
@@ -150,9 +150,12 @@ class Chart extends Component {
   }
 
   renderVerticalRuler() {
+    const horizontalPosition = Math.ceil(this.state.verticalRulerPosition / 4) * 4 - 1;
+
     const verticalRulerStyle = {
       visibility: this.state.isVerticalRulerVisible ? 'visible' : 'hidden',
-      left: this.state.verticalRulerPosition
+      left: horizontalPosition,
+      width: dayWidth
     };
 
     return (

@@ -14,14 +14,6 @@
     font-weight: normal;
     vertical-align: top;
     white-space: nowrap;
-
-    &:first-child {
-      padding-left: 0;
-    }
-
-    &:last-child {
-      padding-right: 0;
-    }
   }
 
   td {
@@ -43,7 +35,7 @@
   th {
     box-sizing: border-box;
     padding: 3px 7px;
-    color: #7194b8;
+    color: #777;
     font-size: 12px;
     letter-spacing: 2px;
     text-align: left;
@@ -51,16 +43,13 @@
 
   thead > tr:first-child > th {
     padding: 0;
-    border-left: 1px solid transparent;
   }
 
   thead > tr:last-child {
     border-bottom: 1px solid #aaa;
 
-    & > th:not(:first-child) {
-      border: 1px solid #ddd;
-      border-top-width: 0;
-      border-bottom-width: 0;
+    th:nth-child(even) {
+      background-color: rgba(245, 241, 238, 0.6);
     }
   }
 
@@ -95,7 +84,8 @@
       background-color: rgba(255,255,255,0.6);
       line-height: 10px;
       border-radius: 3px;
-      padding: 3px 2px 0;
+      padding: 2px 2px 0;
+      cursor: default;
     }
   }
 
@@ -115,9 +105,8 @@
     position: absolute;
     top: 0;
     left: 10px;
-    width: 1px;
     bottom: 0;
     z-index: 1;
-    background-color: rgba(0,0,0,0.1);
+    background-color: rgba(0,0,0,0.06);
   }
 }
