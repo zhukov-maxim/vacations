@@ -63,7 +63,7 @@ class UserVacations extends Component {
           <td>
             {this.getFormattedDayRange(item.daysRange)}
           </td>
-          <td>
+          <td style={{textAlign: 'right'}}>
             {this.getNumberOfDaysInDayRange(item.daysRange)}
           </td>
           <td>
