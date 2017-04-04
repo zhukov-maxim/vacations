@@ -119,7 +119,7 @@ class Chart extends Component {
 
     const allDays = [];
     allDayRangesByDayNumber.map(currentValue => {
-      for (let i = currentValue[0]; i < currentValue[1]; i++) {
+      for (let i = currentValue[0]; i <= currentValue[1]; i++) {
         allDays.push(i);
       }
       return 0;
