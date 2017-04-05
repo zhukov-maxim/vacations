@@ -3,14 +3,22 @@
   flex-direction: column;
   align-items: flex-start;
 
-  .DateInput {
-    width: 110px;
+  .DateRangePicker__picker {
+    box-shadow: 0 8px 20px rgba(139, 87, 42, 0.25);
   }
 
-  .DateInput__display-text--focused {
-    color: #000;
-    background: #dcedc8;
-    border-color: #dcedc8;
+  .DateInput {
+    width: 110px;
+
+    &__display-text--focused {
+      color: #000;
+      background: #dcedc8;
+      border-color: #dcedc8;
+    }
+  }
+
+  .CalendarMonth--horizontal .CalendarMonth__caption {
+    padding-bottom: 40px;
   }
 
   &__submit {
