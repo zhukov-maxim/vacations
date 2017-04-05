@@ -47,7 +47,15 @@ class UserVacations extends Component {
       return null;
     }
 
-    return currentUserVacations[0].dayRanges.sort();
+    return currentUserVacations[0].dayRanges.sort((a, b) => {
+      if (a.daysRange < b.daysRange) {
+        return -1;
+      }
+      else if (a.daysRange > b.daysRange) {
+        return 1;
+      }
+      return 0;
+    });
   }
 
   renderCurrentUserDayRanges() {
