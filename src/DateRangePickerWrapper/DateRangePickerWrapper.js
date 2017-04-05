@@ -49,6 +49,8 @@ class DateRangePickerWrapper extends Component {
           endDate={endDate}
           displayFormat='YYYY.MM.DD'
           minimumNights={0}
+          startDatePlaceholderText='Начало'
+          endDatePlaceholderText='Конец'
         />
         {
           isSubmitEnabled ?
